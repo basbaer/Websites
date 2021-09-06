@@ -17,7 +17,6 @@
   <style type="text/css">
     p {
       font-size: larger;
-      text-align: justify;
     }
 
     a {
@@ -30,10 +29,16 @@
     }
 
     .icon {
-      width: 70px;
+      width: 50px;
     }
 
+    .justify {
+      text-align: justify;
+    }
 
+    .center {
+      text-align: center;
+    }
 
     #navbar_logo {
       width: 80px;
@@ -95,7 +100,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Next Dates</a>
+            <a class="nav-link" aria-current="page" href="#">Next Dates</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Booking</a>
@@ -137,7 +142,7 @@
         <img src="pictures/Titelbild.JPG" class="d-block w-100" alt="...">
         <div class="carousel-caption d-none d-md-block">
           <h5>Dj Rubin</h5>
-          <p>Ready for your party!</p>
+          <p class="center">Ready for your party!</p>
         </div>
       </div>
       <div class="carousel-item">
@@ -173,47 +178,57 @@
 
   <div class="container clearfix py-4 px-0">
 
-    <img src="pictures/Foto_about_me.jpg" class="rounded col-4 float-start mb-3 me-3">
+    <div class="container mb-5">
 
-    <h1 class="pb-3">Let's get the party started! </h1>
+      <img src="pictures/Foto_about_me.jpg" class="rounded col-4 float-start mb-3 me-3">
 
-    <p>
-      Egal ob Geburtstag, Hochzeit, Firmenfeier oder Plattenparty, 
-      es wäre mir ein Ehre bei Dir aufzulegen und die Gäste so richtig in Partystimmung zu bringen.
-      Mein Musikrepertoire reicht von 80er/90er über House bis hin zur klassischen Foxtanz Musik. 
-      Überzeug Dich einfach selbst und hör dir eins meiner Promo Sets an. Außerdem findest du in der Galierie zahlreiche Bilder meine Auftritte.
-    </p>
+      <h1 class="pb-3">Let's get the party started! </h1>
 
-    <p>Du brauchst für deine Feier die Technik aber keinen DJ? Natürlich kannst auch einfach nur unsere Licht- und Tontechnik ausleihen.</p>
-    <p>Schau doch mal im Reiter "Booking", ob etwas passendes dabei ist.</p>
-    <p>Wenn du fündig geworden bist oder Fragen hast, schreibe mir einfach über das Kontakformular. Ich freue mich schon von dir zu hören!</p>
+      <p class="justify">
+        Egal ob Geburtstag, Hochzeit, Firmenfeier oder Plattenparty, 
+        es wäre mir ein Ehre bei Dir aufzulegen und die Gäste so richtig in Partystimmung zu bringen.
+        Mein Musikrepertoire reicht von 80er/90er über House bis hin zur klassischen Foxtanz Musik. 
+        Überzeug Dich einfach selbst und hör dir eins meiner Promo Sets an. Außerdem findest du in der Galierie zahlreiche Bilder meine Auftritte.
+      </p>
+
+      <p class="justify">Du brauchst für deine Feier die Technik aber keinen DJ? Natürlich kannst auch einfach nur unsere Licht- und Tontechnik ausleihen.</p>
+      <p class="justify">Schau doch mal im Reiter "Booking", ob etwas passendes dabei ist.</p>
+      <p class="justify">Wenn du fündig geworden bist oder Fragen hast, schreibe mir einfach über das Kontakformular. Ich freue mich schon von dir zu hören!</p>
+
+    </div>
+    <hr class="mt-5">
 
     <div class="container mb-5">
 
       <div class="row align-items-center">
-        <img src="pictures/Icons/Instagram_Icon_bubbles.png" class="icon">
 
-        <a href="https://www.instagram.com/dj_rubin_official/" target="_blank">@dj_rubin_official</a>
+        <div class="col-md-4">
+          <img src="pictures/Icons/Instagram_Icon_bubbles.png" class="icon">
 
-      </div>
-      
-      <div class="row align-items-center">
-        <img src="pictures/Icons/Facebook_Icon_Bubbles.png" class="icon">
-      
-      
-        <a href="https://www.facebook.com/rubinDJ/" target="_blank">facebook.com/rubinDJ/</a>
-      </div>
+          <a href="https://www.instagram.com/dj_rubin_official/" target="_blank">@dj_rubin_official</a>
 
-      <div class="row align-items-center">
-        <img src="pictures/Icons/email_icon.png" class="icon">
+        </div>
+
+      
+      
+        <div class="col-md-4">
+          <img src="pictures/Icons/Facebook_Icon_Bubbles.png" class="icon">
+      
+          <a href="https://www.facebook.com/rubinDJ/" target="_blank">facebook.com/rubinDJ/</a>
+        </div>
+      
+
+      
+        <div class="col-md-4">
+          <img src="pictures/Icons/email_icon.png" class="icon">
      
-        <a href="mailto: dj_rubin_official@outlook.de">dj_rubin_official@outlook.de</a>
-      </div>
+          <a href="mailto: dj_rubin_official@outlook.de">dj_rubin_official@outlook.de</a>
 
+        </div>
+      
+      </div>
 
     </div>
-
-    <hr class="mt-5">
 
   </div>
 
