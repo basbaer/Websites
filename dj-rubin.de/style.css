@@ -1,0 +1,99 @@
+
+p {
+    font-size: larger;
+}
+
+a {
+    text-decoration: none;
+    display: contents;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    width: 30px;
+    margin-right: 7px;
+}
+
+#mail_icon {
+    width: 35px;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.center {
+    text-align: center;
+}
+
+#navbar_logo {
+    width: 80px;
+    margin: -10px;
+
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.container_after_navbar {
+    margin-top: 61px;
+}
+
+.container_after_navbar_spaced {
+    margin-top: 80px;
+}
+
+.table_align_left {
+    text-align: left;
+}
+
+#bg_image_main {
+    background-image: url(Mischpult/mischpult_sized.jpg);
+    height: 100vh;
+
+}
+
+#explosion_banner {
+    position: relative;
+    height: 100px;
+}
+
+#container_explosion{
+    position: relative;
+    text-align: center;
+    color: white
+
+}
+
+#explosion_text {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+
+
+th {
+    text-align: center;
+}
+
+td {
+    text-align: center;
+}
+
+
+
+
+body {
+    background-image: url(Mischpult/IMG_0272.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
