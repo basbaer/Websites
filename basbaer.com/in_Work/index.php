@@ -1,84 +1,75 @@
-<?php
+    <?php
 
-if ($_POST) {
+    if ($_POST) {
 
-    $error = "";
+        $error = "";
 
-    if (!$_POST["mail"]){
+        if (!$_POST["mail"]){
 
-        $error .= "An email address is required <br>";
-
-
-    }
-
-    
-
-    if (!$_POST["InputSubject"]){
-
-        $error .= "The Suject field is required <br>";
-
-    }
-
-    if (!$_POST["InputBody"]){
-
-        $error .= "The text field is required <br>";
-
-    }
-
-    if (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
-        $error .= "Invalid email format";
-    }
+            $error .= "An email address is required <br>";
 
 
-    if ($error != ""){
-        $error = '<div class="container"><div class="alert alert-danger col-md-6 my-3" role="alert">
-        <h4 class="alert-heading">There are some errors!</h4>
-  <p>'.$error.'</p></div></div>';
-
-        echo $error;
-    }else{
-
-        $emailTo = "";
-
-        $subject = $_POST["InputSubject"];
-
-        $body = $_POST["InputBody"];
-
-        $headers = "From: ".$_POST["mail"];
-
-
-
-        if (mail($emailTo, $subject, $body, $headers)){
-
-            echo '<div class="container">
-                    <div class="alert alert-success col-md-6 my-3" role="alert">
-                        <h4 class="alert-heading">Anfrage wurde gesendet</h4>
-                    </div>
-                </div>';
-
-        }else{
-            echo '<div class="container">
-            <div class="alert alert-attention col-md-6 my-3" role="alert">
-                <h4 class="alert-heading">Anfrage wurde nicht gesendet (Server-Fehler)</h4>
-            </div>
-        </div>';
         }
-
 
         
 
+        if (!$_POST["InputSubject"]){
 
+            $error .= "The Suject field is required <br>";
+
+        }
+
+        if (!$_POST["InputBody"]){
+
+            $error .= "The text field is required <br>";
+
+        }
+
+        if (!filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
+            $error .= "Invalid email format";
+        }
+
+
+        if ($error != ""){
+            $error = '<div class="container"><div class="alert alert-danger col-md-6 my-3" role="alert">
+            <h4 class="alert-heading">There are some errors!</h4>
+    <p>'.$error.'</p></div></div>';
+
+            echo $error;
+        }else{
+
+            $emailTo = "bastianbaer@hotmail.de";
+
+            $subject = $_POST["InputSubject"];
+
+            $body = $_POST["InputBody"].PHP_EOL.PHP_EOL."Absender: ".$_POST["mail"];
+
+            $headers = "From: contact@basbaer.com";
+
+
+
+            if (mail($emailTo, $subject, $body, $headers)){
+
+                echo '<div class="container">
+                        <div class="alert alert-success col-md-6 my-3" role="alert">
+                            <h4 class="alert-heading">Anfrage wurde gesendet</h4>
+                        </div>
+                    </div>';
+
+            }else{
+                echo '<div class="container">
+                <div class="alert alert-attention col-md-6 my-3" role="alert">
+                    <h4 class="alert-heading">Anfrage wurde nicht gesendet (Server-Fehler)</h4>
+                </div>
+            </div>';
+            }
+        }
     }
 
 
 
 
-}
-
-
-
-
-?>
+    ?>
 
 <html lang="en">
   <head>
@@ -106,18 +97,19 @@ if ($_POST) {
         <form class="needs-validation" method="post" novalidate>
 
             <div class="col-md-6 mb-3 has-validation">
-                <label for="InputEmail" class="form-label">Email Adresse</label>
-                <input type="email" class="form-control" id="InputEmail" name="mail" aria-describedby="emailHelp" required>
+                <label for="InputEmail" class="form-label">Deine E-Mail</label>
+                <input type="email" class="form-control" id="InputEmail" name="mail" aria-describedby="emailHelp"
+                    required>
                 <div class="invalid-feedback">
                     Bitte gib eine gültige E-Mail-Adresse ein.
                 </div>
 
-                <div id="emailHelp" class="form-text">Die Mailaddresse wird mit niemandem geteilt</div>
+                <div id="emailHelp" class="form-text">Deine E-Mail Adresse wird lediglich zur Kontaktaufnahme verwendet</div>
 
-                
-          
 
-             
+
+
+
             </div>
 
             <div class="col-md-6 mb-3">
@@ -145,7 +137,7 @@ if ($_POST) {
             </div>
 
             <div class="col-12">
-                <button class="btn btn-primary" type="submit">Anfrage absenden!</button>
+                <button class="btn btn-dark" type="submit">Anfrage absenden!</button>
             </div>
 
         </form>

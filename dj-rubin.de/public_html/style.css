@@ -1,6 +1,7 @@
 
 p {
     font-size: larger;
+    text-align: justify;
 }
 
 a {
@@ -17,8 +18,8 @@ a:hover {
     margin-right: 7px;
 }
 
-#mail_icon {
-    width: 35px;
+.icon_big {
+    width: 60px;
 }
 
 .justify {
@@ -69,12 +70,21 @@ a:hover {
 
 }
 
-#explosion_text {
+.explosion_text {
     position: absolute;
     top: 42%;
     left: 50%;
     transform: translate(-50%, -50%);
     color: #fff;
+}
+
+.footer_link {
+    text-decoration: none;
+    color: #555;
+}
+
+#footer_text {
+    color:#555;
 }
 
 
