@@ -12,8 +12,6 @@
     //Note: the password does not contain special characters
     $link = mysqli_connect("shareddb-s.hosting.stackcp.net", "ownstuffdb-313235581b", "lOdyA4LhqQD", "ownstuffdb-313235581b");
 
-    $link->query("SET NAMES 'utf8'");
-
     // this will echo nothing if there is no error
     if (mysqli_connect_error()){
         die("Connection Error: Maybe the password contains special characters");
@@ -172,4 +170,3 @@
 to do:
 change date appearance
 change color if the same date
-umlaute
