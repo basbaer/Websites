@@ -12,6 +12,9 @@
     //Note: the password does not contain special characters
     $link = mysqli_connect("shareddb-s.hosting.stackcp.net", "ownstuffdb-313235581b", "lOdyA4LhqQD", "ownstuffdb-313235581b");
 
+    //this line is needed to display special characters properly
+    $link->query("SET NAMES 'utf8'");
+
     // this will echo nothing if there is no error
     if (mysqli_connect_error()){
         die("Connection Error: Maybe the password contains special characters");
@@ -37,7 +40,18 @@
         $table = $table."<tr>";
 
         for ($i = 1; $i < 7; $i++){
-            $table = $table."<td>".$row[$i]."</td>";
+
+            $output = $row[$i];
+
+            //formate date correctly
+            if ($i == 2 || $i == 3){
+                $date = date_create($output);
+                $output = date_format($date, "d.m.");
+            }
+
+            $table = $table."<td>".$output."</td>";
+            
+            
         }
 
         $table = $table."</tr>";
@@ -170,3 +184,4 @@
 to do:
 change date appearance
 change color if the same date
+order by date 
