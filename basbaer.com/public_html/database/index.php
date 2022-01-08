@@ -37,30 +37,43 @@
                 <th>Infos</th>
             </tr>";
     
-    //
-    $comp_date;
+    //number over overlap
+    $ov = 4;
 
     while($row = mysqli_fetch_array($result)){
 
         $table = $table."<tr>";
 
         for ($i = 1; $i < $number_of_cols; $i++){
+            if($i != $ov){
+                $output = $row[$i];
 
-            $output = $row[$i];
-
-            //formate date correctly
-            if ($i == 2 || $i == 3){
-                //handle festivals without a date
-                if ($output == "0000-00-00"){
-                    $output = "";
-                }else{
-                    $date = date_create($output);
-                    $output = date_format($date, "d.m.");
+                //formate date correctly
+                if ($i == 2 || $i == 3){
+                    //handle festivals without a date
+                    if ($output == "0000-00-00"){
+                        $output = "";
+                    }else{
+                        //right date format
+                        $date = date_create($output);
+                        $output = date_format($date, "d.m.");
+                    }
+    
                 }
+
+                //change color if overlap
+                if($row[$ov] == '1' && ($i == 2 || $i == 3)){
+                    $table = $table."<td class='red_font'>".$output."</td>";
+                }else{
+                    $table = $table."<td>".$output."</td>";
+
+                }
+    
+
 
             }
 
-            $table = $table."<td>".$output."</td>";
+
             
             
         }
@@ -192,6 +205,10 @@
                 background-color: #D6EEEE;
             }
 
+        .red_font{
+            color:red;
+        }
+
     </style>
 
 
@@ -220,6 +237,7 @@
 </form>
 
 
+
 </body>
 
 
@@ -227,9 +245,6 @@
 </html>
 
 to do:
-change color if the same date
-            - change db
-            - change inserting into db
-            - change 
+
 passwort hinzufuegen
 display links nicely
