@@ -37,18 +37,20 @@
                 <th>Infos</th>
             </tr>";
     
-    //number over overlap
+    //indizies
     $ov = 4;
+    $num_tic = 6;
 
     while($row = mysqli_fetch_array($result)){
 
         $table = $table."<tr>";
 
         for ($i = 1; $i < $number_of_cols; $i++){
+            //skip the overlap colum
             if($i != $ov){
                 $output = $row[$i];
 
-                //formate date correctly
+                //format date correctly
                 if ($i == 2 || $i == 3){
                     //handle festivals without a date
                     if ($output == "0000-00-00"){
@@ -59,6 +61,14 @@
                         $output = date_format($date, "d.m.");
                     }
     
+                }
+
+                //format links
+                if($i == $num_tic){
+                    //check if it's a link
+                    if(substr_count($output, 'http')){
+                        $output = "<a href='".$output."'>hier</a>";
+                    }
                 }
 
                 //change color if overlap
@@ -247,4 +257,3 @@
 to do:
 
 passwort hinzufuegen
-display links nicely
