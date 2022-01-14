@@ -1,5 +1,7 @@
 <?php
 
+    session_start();
+
     if($_SESSION["password"]){
         
         //some variables
@@ -30,7 +32,7 @@
         $result = mysqli_query($link, $query);
 
         //create table
-        $table ="<table id='fes_table'>
+        $table ="<table>
                 <tr>
                     <th>Festival</th>
                     <th>Start</th>
@@ -180,10 +182,9 @@
 
             }
 
-        //password db: lOdyA4LhqQD
         }
 
-}
+    }
 
 
 
@@ -225,10 +226,6 @@
             display: none;
         }
 
-        #fes_table{
-            display: none;
-        }
-
         #logIn{
             width:100%;
             text-align:center;
@@ -242,49 +239,26 @@
 
 <body>
 
-    <div class="hiddenAtStart">
+    
+    <form method="post" class="hiddenAtStart">
 
-        <form method="post">
+        <input name="name" type="text" placeholder="Festival name">
 
-            <input name="name" type="text" placeholder="Festival name">
+        <input name="start" type="date" placeholder="starting date">
 
-            <input name="start" type="date" placeholder="starting date">
+        <input name="end" type="date" placeholder="end date">
 
-            <input name="end" type="date" placeholder="end date">
+        <input name="location" type="text" placeholder="location">
 
-            <input name="location" type="text" placeholder="location">
+        <input name="tickets" type="text" placeholder="tickets">
 
-            <input name="tickets" type="text" placeholder="tickets">
+        <input name="info" type="text" placeholder="additional infos">
 
-            <input name="info" type="text" placeholder="additional infos">
+        <input type="submit" value="Add entry">
+        
 
-            <input type="submit" value="Add entry">
-            
-
-        </form>
-
-    </div>
-
-    <script type="text/javascript">
-
-        document.getElementById("ButtonLogIn").onclick = function(){
-            let input = document.getElementById("passwordLogIn").value;
-
-            if (input == "gogogi"){
-                document.getElementById("logIn").style.display = "none"
-                document.getElementById("fes_table").style.display = "block"
-            }else{
-                alert("Wrong password");
-            }
-            
-        }
-
-    </script>
-
-
+    </form>
 
 </body>
-
-
 
 </html>
