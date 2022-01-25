@@ -1,9 +1,14 @@
 <?php
 
+    $error .= "";
+
     session_start();
 
-    if($_SESSION["password"]){
-        
+    print_r($_SESSION);
+
+    if(array_key_exists('admin', $_SESSION)){
+        //this part is for all users (the only admin part is below)
+
         //some variables
         $table_name = "Festivals";
         $col_name= "name";
@@ -13,7 +18,8 @@
         $col_loc= "location";
         $col_tic= "tickets";
         $col_inf= "info";
-        $number_of_cols = 8;
+        $col_basti= "Basti-Score";
+        $number_of_cols = 9;
 
         //get the server and the db name (db name and username are the same) from the stack cp control panel > MySQL Databases
         //Note: the password does not contain special characters
@@ -83,110 +89,28 @@
                         $table = $table."<td>".$output."</td>";
 
                     }
-        
-
-
                 }
-
-
-                
-                
             }
 
             $table = $table."</tr>";
-
-        
-            
-
+ 
         }
 
         $table = $table."</table>";
 
         echo $table;
 
-        if($_POST){
-
-            //get essential values of inputs
-            if ($_POST['name'] == ''){
-                echo "You have to add a name";
-            }else{
-
-                $name = $_POST['name'];
-                $start = $_POST['start'];
-                $end = $_POST['end'];
-                $loc = $_POST['location'];
-                $tic = $_POST['tickets'];
-                $inf = $_POST['inf'];
-
-                //check if festival already exists
-                $query = "SELECT id FROM $table_name WHERE $col_name = '".mysqli_real_escape_string($link, $name)."';";
-
-                $result = mysqli_query($link, $query);
-
-                //Festival is alread in db
-                if (mysqli_num_rows($result) > 0){
-                    echo "Oops this festival is already in the database";
-                    
-                }else{
-                    //Festival is not in db
-
-                    //reformat the dates
-                    $start= date_create($start);
-                    $start= date_format($start, "Y-m-d");
-
-                    $end= date_create($end);
-                    $end= date_format($end, "Y-m-d");
-
-                    
-                    //overlap variable
-                    $overlap= 0;
-                    //check if there is a overlap with a other festival
-                    $query = "SELECT id FROM $table_name WHERE $col_start BETWEEN '".mysqli_real_escape_string($link, $start)."' AND '"
-                    .mysqli_real_escape_string($link, $end)."' OR $col_end BETWEEN '".mysqli_real_escape_string($link, $start)."' AND '"
-                    .mysqli_real_escape_string($link, $end)."' OR ($col_start < '".mysqli_real_escape_string($link, $start)."' AND $col_end > '"
-                    .mysqli_real_escape_string($link, $end)."')";
-
-
-
-                    $overlap_festivals = mysqli_query($link, $query);
-
-                    if($overlap_festivals){
-                        while($row = mysqli_fetch_array($overlap_festivals)){
-                            //change overlap to true
-                            $query = "UPDATE $table_name SET $col_overlap = '1' WHERE id = '".$row[0]."' LIMIT 1";
-                            mysqli_query($link, $query);
-                            $overlap = 1;
-                        }
-                        
-                    }else{
-                        echo "no overlaps";
-                    }
-
-                    //Add the festival
-                    $insert = "INSERT INTO $table_name (id, $col_name, $col_start, $col_end, $col_overlap, $col_loc, $col_tic, $col_inf) VALUES (NULL, '"
-                    .mysqli_real_escape_string($link, $name)."', '"
-                    .mysqli_real_escape_string($link, $start)."', '"
-                    .mysqli_real_escape_string($link, $end)."', '"
-                    .$overlap."', '"
-                    .mysqli_real_escape_string($link, $loc)."', '"
-                    .mysqli_real_escape_string($link, $tic)."', '"
-                    .mysqli_real_escape_string($link, $inf)."')";
-
-                    if(mysqli_query($link, $insert)){
-                        echo "Festival added succesful";
-                    } else {
-                        echo "Festival could not be added";
-                    }
-
-                }
-
-            }
-
+        if($_SESSION['admin'] = '1'){
+            echo "<a href='addFestival.php'>Add festival</a>";
         }
 
+        
+
+    }else{
+        $error .= "No key 'admin' in SESSSION VARIABLE<br>";
     }
 
-
+    echo $error;
 
 ?>
 
@@ -239,25 +163,7 @@
 
 <body>
 
-    
-    <form method="post" class="hiddenAtStart">
 
-        <input name="name" type="text" placeholder="Festival name">
-
-        <input name="start" type="date" placeholder="starting date">
-
-        <input name="end" type="date" placeholder="end date">
-
-        <input name="location" type="text" placeholder="location">
-
-        <input name="tickets" type="text" placeholder="tickets">
-
-        <input name="info" type="text" placeholder="additional infos">
-
-        <input type="submit" value="Add entry">
-        
-
-    </form>
 
 </body>
 

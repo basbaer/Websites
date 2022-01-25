@@ -2,11 +2,14 @@
 
     session_start();
 
-    $table_logIn = "test_password";
+    $table_logIn = "FestivalLogIn";
+    $col_id = "id";
+    $col_pass = "password";
+    $col_admin = "admin";
 
     //get the server and the db name (db name and username are the same) from the stack cp control panel > MySQL Databases
     //Note: the password does not contain special characters
-    $link = mysqli_connect("shareddb-s.hosting.stackcp.net", "ownstuffdb-313235581b", "lOdyA4LhqQD", "ownstuffdb-313235581b");
+    $link = mysqli_connect("sdb-f.hosting.stackcp.net", "logInDb-3138340968", "ud0uz58bam", "logInDb-3138340968");
 
     //this line is needed to display special characters properly
     $link->query("SET NAMES 'utf8'");
@@ -16,6 +19,9 @@
         die("Connection Error: Maybe the password contains special characters");
     }
 
+
+    $error = "";
+
     if($_POST){
 
         if($_POST['password']){
@@ -23,27 +29,42 @@
             //check if password is correct
             $pass = $_POST['password'];
 
-            $query = "SELECT * FROM $table_logIn WHERE password = '".mysqli_real_escape_string($link, $pass)."'";
+            $query = "SELECT * FROM $table_logIn";
 
             $result = mysqli_query($link, $query);
 
-            if(mysqli_num_rows($result) != 0){
-                $_SESSION["password"] = $_POST['password'];
-                header("Location: https://www.basbaer.com/festivals/");
-                exit;
+            if(mysqli_num_rows($result) > 0){
 
-            }else{
-                //show error message
-                echo "<script>alert('Wrong password')</script>"; 
+                $rows = mysqli_fetch_all($result);
+
+                foreach ($rows as $row){
+
+                    $pass_index = "1";
+                    $admin_index = "2";
+
+                    if (password_verify($pass, $row[$pass_index])) {
+
+                        $_SESSION['admin'] = $row[$admin_index];
+
+                        header("Location: https://www.basbaer.com/festivals/");
+
+                        exit;
+
+                    }else{
+                        $error.= "password does not match";
+                    }
+                }
             }
 
-            
-
+        }else{
+            $error .= "No password in POST";
         }
+ 
+    }else{
+        $error .= "No POST variable<br>";
+    }
 
-          
-      }
-
+    echo $error;
 
 ?>
 
@@ -54,7 +75,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dope shit</title>
+    <title>Basti</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
