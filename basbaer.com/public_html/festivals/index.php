@@ -38,15 +38,17 @@
         $result = mysqli_query($link, $query);
 
         //create table
-        $table ="<table>
+        $table ="<div class='container-md'><table class='table table-dark table-striped'>
+                <thead>
                 <tr>
-                    <th>Festival</th>
-                    <th>Start</th>
-                    <th>End</th>
-                    <th>Location</th>
-                    <th>Tickets</th>
-                    <th>Infos</th>
-                </tr>";
+                    <th scope='col'>Festival</th>
+                    <th scope='col'>Start</th>
+                    <th scope='col'>End</th>
+                    <th scope='col'>Location</th>
+                    <th scope='col'>Tickets</th>
+                    <th scope='col'>Infos</th>
+                </tr>
+                <thead><tbody>";
         
         //indizies
         $ov = 4;
@@ -82,13 +84,21 @@
                         }
                     }
 
-                    //change color if overlap
-                    if($row[$ov] == '1' && ($i == 2 || $i == 3)){
-                        $table = $table."<td class='red_font'>".$output."</td>";
+                    if ($i == 1){
+                        $table .= "<th scope='row'>".$output."</th>";
                     }else{
-                        $table = $table."<td>".$output."</td>";
+                        //change color if overlap
+                        if($row[$ov] == '1' && ($i == 2 || $i == 3)){
+                            $table = $table."<td class='red_font'>".$output."</td>";
+                        }else{
+                            $table = $table."<td>".$output."</td>";
+
+                        }
 
                     }
+
+
+
                 }
             }
 
@@ -96,11 +106,11 @@
  
         }
 
-        $table = $table."</table>";
+        $table = $table."</tbody></table></div>";
 
         echo $table;
 
-        if($_SESSION['admin'] = '1'){
+        if($_SESSION['admin'] == '1'){
             echo "<a href='addFestival.php'>Add festival</a>";
         }
 
@@ -125,6 +135,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet"> 
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+
 
     <style type="text/css">
 

@@ -39,16 +39,15 @@
 
                 foreach ($rows as $row){
 
-                    $pass_index = "1";
-                    $admin_index = "2";
+                    $pass_index = 1;
+                    $admin_index = 2;
 
                     if (password_verify($pass, $row[$pass_index])) {
 
                         $_SESSION['admin'] = $row[$admin_index];
 
                         header("Location: https://www.basbaer.com/festivals/");
-
-                        exit;
+                        
 
                     }else{
                         $error.= "password does not match";
@@ -64,7 +63,7 @@
         $error .= "No POST variable<br>";
     }
 
-    echo $error;
+    //echo $error;
 
 ?>
 
@@ -75,7 +74,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basti</title>
+    <title>Good Stuff</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">

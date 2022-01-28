@@ -42,7 +42,7 @@
                 $end = $_POST['end'];
                 $loc = $_POST['location'];
                 $tic = $_POST['tickets'];
-                $inf = $_POST['inf'];
+                $inf = $_POST['info'];
                 $basti = $_POST['basti'];
 
                 //check if festival already exists

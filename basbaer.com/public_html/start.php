@@ -39,21 +39,24 @@
 
                 foreach ($rows as $row){
 
-                    $pass_index = "1";
-                    $admin_index = "2";
+                    $pass_index = 1;
+                    $admin_index = 2;
 
                     if (password_verify($pass, $row[$pass_index])) {
 
                         $_SESSION['admin'] = $row[$admin_index];
 
-                        header("Location: https://www.basbaer.com/festivals/");
+                        $error .= "row: $row[$admin_index]<br>Session: ".$_SESSION['admin']."<br>";
 
-                        exit;
+                        //header("Location: https://www.basbaer.com/festivals/");
+
 
                     }else{
-                        $error.= "password does not match";
+                        $error.= "password does not match<br>";
                     }
                 }
+
+                
             }
 
         }else{
@@ -65,6 +68,8 @@
         $error .= "No POST variable<br>";
     }
 
+    $error .= "Session: ".$_SESSION['admin']."<br>";
+
     echo $error;
 
 
@@ -73,7 +78,13 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Basti</title>
@@ -81,6 +92,7 @@
 </head>
 
 <body>
+    <div class="container-md bg-danger">100% wide until extra large breakpoint</div>
 
     <form method="post" id="form_password">
         <input name="password" type="password" id="passwordLogIn">
