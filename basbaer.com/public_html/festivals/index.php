@@ -4,8 +4,6 @@
 
     session_start();
 
-    print_r($_SESSION);
-
     if(array_key_exists('admin', $_SESSION)){
         //this part is for all users (the only admin part is below)
 
@@ -38,7 +36,8 @@
         $result = mysqli_query($link, $query);
 
         //create table
-        $table ="<div class='container-md'><table class='table table-dark table-striped'>
+        $table .= "<div id='bg_wrap' class='container-fluid align-items-center d-flex'>";
+        $table .="<div class='container-md'><table class='table table-dark table-striped'>
                 <thead>
                 <tr>
                     <th scope='col'>Festival</th>
@@ -47,12 +46,14 @@
                     <th scope='col'>Location</th>
                     <th scope='col'>Tickets</th>
                     <th scope='col'>Infos</th>
+                    <th scope='col'>Basti-Score</th>
                 </tr>
                 <thead><tbody>";
         
         //indizies
-        $ov = 4;
-        $num_tic = 6;
+        $ov_ind = 4;
+        $tic_ind = 6;
+        $bas_ind = 8;
 
         while($row = mysqli_fetch_array($result)){
 
@@ -60,7 +61,7 @@
 
             for ($i = 1; $i < $number_of_cols; $i++){
                 //skip the overlap colum
-                if($i != $ov){
+                if($i != $ov_ind){
                     $output = $row[$i];
 
                     //format date correctly
@@ -77,23 +78,37 @@
                     }
 
                     //format links
-                    if($i == $num_tic){
+                    if($i == $tic_ind){
                         //check if it's a link
                         if(substr_count($output, 'http')){
                             $output = "<a href='".$output."'>hier</a>";
                         }
                     }
 
+                    //start new row
                     if ($i == 1){
                         $table .= "<th scope='row'>".$output."</th>";
                     }else{
-                        //change color if overlap
-                        if($row[$ov] == '1' && ($i == 2 || $i == 3)){
-                            $table = $table."<td class='red_font'>".$output."</td>";
-                        }else{
-                            $table = $table."<td>".$output."</td>";
+                        //here will the classes be added
+                        $class = " class='";
 
+                        $table = $table."<td";
+                        //change color if overlap
+                        if($row[$ov_ind] == '1' && ($i == 2 || $i == 3)){
+                            $class .= "red_font";
                         }
+
+                        //center text of basti-score column
+                        if($i == $bas_ind) {
+                            $class .= " text-center";
+                        }
+
+                        $class .= "'";
+                        
+                        
+                        $table .= $class.">".$output."</td>";
+
+                        
 
                     }
 
@@ -106,7 +121,7 @@
  
         }
 
-        $table = $table."</tbody></table></div>";
+        $table = $table."</tbody></table></div></div>";
 
         echo $table;
 
@@ -120,7 +135,7 @@
         $error .= "No key 'admin' in SESSSION VARIABLE<br>";
     }
 
-    echo $error;
+    //echo $error;
 
 ?>
 
@@ -170,12 +185,18 @@
             margin: 50px;
         }
 
+        #bg_wrap{
+            background-image: url("pictures/stars.jpg");
+            height:100%;
+        }
+
     </style>
 
 
 </head>
 
 <body>
+
 
 
 
