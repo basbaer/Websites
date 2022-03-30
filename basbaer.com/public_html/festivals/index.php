@@ -4,6 +4,7 @@
 
     session_start();
 
+    //key exists means, the user has logged in with a valid password
     if(array_key_exists('admin', $_SESSION)){
         //this part is for all users (the only admin part is below)
 
@@ -48,7 +49,7 @@
                     <th scope='col'>Infos</th>
                     <th scope='col'>Basti-Score</th>
                 </tr>
-                <thead><tbody>";
+                </thead><tbody>";
         
         //indizies
         $ov_ind = 4;

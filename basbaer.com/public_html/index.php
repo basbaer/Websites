@@ -36,19 +36,27 @@
             if(mysqli_num_rows($result) > 0){
 
                 $rows = mysqli_fetch_all($result);
-
+                
+                //run over all passwords in the logIn table
                 foreach ($rows as $row){
 
                     $pass_index = 1;
                     $admin_index = 2;
 
+                    //checks if given password is in table
                     if (password_verify($pass, $row[$pass_index])) {
 
+                        //1 if the user has admin rights, 0 if not
                         $_SESSION['admin'] = $row[$admin_index];
+
+                        //password is encryption key for database
+                        $_SESSION['password'] = $pass;
 
                         $error .= "row: $row[$admin_index]<br>Session: ".$_SESSION['admin']."<br>";
 
-                        header("Location: festivals/");
+                        //header("Location: festivals/");
+
+                        header("Location: food/");
 
                         session_write_close();
 
