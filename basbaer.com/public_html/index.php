@@ -91,17 +91,22 @@
 <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Good Stuff</title>
+    <title>Bas Baer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/kute.js@2.1.2/dist/kute.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous" >
+
+
 
     <style>
         body {
 
             font-family: 'M PLUS 1 Code', sans-serif;
-            background-image: url("pictures/bg_2.JPG");
+            background-image: url("pictures/bg_2.jpg");
+            background-size: cover;
             margin: 0;
             overflow-x: hidden; /* no scrolling is possible */
             overflow-y: hidden;
@@ -137,6 +142,25 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="festivals/">Festivals</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="food/">Calendar</a>
+                </li>
+            </ul>
+            </div>
+        </div>
+    </nav>
+            
 
            
     <div id="wrap">

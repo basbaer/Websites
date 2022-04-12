@@ -180,15 +180,10 @@
             display: none;
         }
 
-        #logIn{
-            width:100%;
-            text-align:center;
-            margin: 50px;
-        }
 
-        #bg_wrap{
+        body{
             background-image: url("pictures/stars.jpg");
-            height:100%;
+            
         }
 
     </style>
