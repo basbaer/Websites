@@ -1,3 +1,13 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    /* bottom = footer height */
+    padding: 25px;
+}
 
 p {
     font-size: larger;
@@ -11,6 +21,15 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100 px;
+    width: 100%;
+    overflow: hidden;
 }
 
 .icon {
@@ -86,19 +105,6 @@ a:hover {
 #footer_text {
     color:#555;
 }
-
-
-
-th {
-    text-align: center;
-}
-
-td {
-    text-align: center;
-}
-
-
-
 
 body {
     background-image: url(Mischpult/IMG_0272.jpg);
