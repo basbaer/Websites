@@ -1,0 +1,20 @@
+Database: xxx
+
+Table: Users
+UserId
+Username
+Email
+Password
+Salt
+
+User has 1:1 relationship to Food_ids
+
+Table: Food_ids
+Name
+Id
+
+Food_ids has 1:N relationship to Food
+id
+date
+amount
+...

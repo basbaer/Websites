@@ -1,0 +1,115 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin: 0 0 100px;
+    /* bottom = footer height */
+    padding: 25px;
+}
+
+p {
+    font-size: larger;
+    text-align: justify;
+}
+
+a {
+    text-decoration: none;
+    display: contents;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 100 px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.icon {
+    width: 30px;
+    margin-right: 7px;
+}
+
+.icon_big {
+    width: 60px;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.center {
+    text-align: center;
+}
+
+#navbar_logo {
+    width: 80px;
+    margin: -10px;
+
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.container_after_navbar {
+    margin-top: 61px;
+}
+
+.container_after_navbar_spaced {
+    margin-top: 80px;
+}
+
+.table_align_left {
+    text-align: left;
+}
+
+#bg_image_main {
+    background-image: url(Mischpult/mischpult_sized.jpg);
+    height: 100vh;
+
+}
+
+#explosion_banner {
+    position: relative;
+    height: 100px;
+}
+
+#container_explosion{
+    position: relative;
+    text-align: center;
+    color: white
+
+}
+
+.explosion_text {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+}
+
+.footer_link {
+    text-decoration: none;
+    color: #555;
+}
+
+#footer_text {
+    color:#555;
+}
+
+body {
+    background-image: url(Mischpult/IMG_0272.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+}
