@@ -38,7 +38,14 @@ $number_of_cols = 5;
 
 $link_ownStuff = ConnectDB::connect($isLocalhost, "ownstuffdb-313235581b", "lOdyA4LhqQD", "58626");
 
-add_Meal();
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (isset($_POST['action']) && $_POST['action'] == 'addMeal') {
+      // double secure
+      add_Meal();
+    }
+}
+
+
 
 function add_Meal()
 {

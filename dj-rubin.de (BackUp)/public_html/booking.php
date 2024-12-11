@@ -131,7 +131,8 @@
                 }
             }
 
-            $('#submitForm').submit(function(event) {
+            
+            /* $('#submitForm').submit(function(event) {
                 event.preventDefault();
                 var email = $('#InputEmail').val();
                 var subject = $('#InputName').val();
@@ -146,7 +147,7 @@
                         $('#submitForm').unbind('submit').submit();
                     });;
                 });
-            });
+            }); */
         </script>
 
 
