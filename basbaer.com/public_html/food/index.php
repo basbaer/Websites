@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+    //redirect users that enter over url
+    session_start();
+    require_once "../config.php";
+    //redirect users that are not logged in to starting page
+    if (!$_SESSION['password']){
+        header('Location: http://' .  $_SERVER['HTTP_HOST']);
+        exit;
+    }
+?>
+
 <html>
 
 <head>
@@ -52,25 +62,29 @@
 </head>
 
 <body>
+
     <!--Navbar-->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="../">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="festivals/">Festivals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="food/">Calendar</a>
-                    </li>
-                </ul>
-            </div>
+                
+            <button class="btn btn-outline-light" type="button" id="homeButton">Home</button>
+                   
+            <button class="btn btn-outline-success ms-auto" type="button" id="blogButton">Blog</button>
+                   
         </div>
     </nav>
+
+
+
+    <script>
+    document.getElementById('blogButton').addEventListener('click', function() {
+            window.location.href = '/blog';
+    });
+
+    document.getElementById('homeButton').addEventListener('click', function() {
+        window.location.href = '/';
+    });
+    </script>
 
     <div class='container-sm mb-4'>
         <table class='table table-dark table-striped' id="mealTable">

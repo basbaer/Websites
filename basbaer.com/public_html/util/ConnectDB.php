@@ -15,7 +15,7 @@ class ConnectDB {
         //Note: the password does not contain special characters
         if($isLocalhost){
             if($port != NULL){
-                $link = mysqli_connect("mysql.stackcp.com", $databaseName, $databasePassword, $databaseName, $port);
+                $link = mysqli_connect("mysql.gb.stackcp.com", $databaseName, $databasePassword, $databaseName, $port);
             }
             
         }else{

@@ -1,4 +1,6 @@
 <?php
+require_once "../config.php";
+include "ConnectDB.php";
 
 session_start();
 
@@ -7,10 +9,10 @@ $col_id = "id";
 $col_pass = "password";
 $col_admin = "admin";
 
+
 //get the server and the db name (db name and username are the same) from the stack cp control panel > MySQL Databases
 //Note: the password does not contain special characters
-$link = mysqli_connect("sdb-f.hosting.stackcp.net", "logInDb-3138340968", "ud0uz58bam", "logInDb-3138340968");
-//$link = mysqli_connect("mysql.stackcp.com", "logInDb-3138340968", "ud0uz58bam", "logInDb-3138340968", "58438");
+$link = ConnectDB::connect(ISONAPACHE, "logInDb-3138340968", "ud0uz58bam", "58438");
 
 //this line is needed to display special characters properly
 $link->query("SET NAMES 'utf8'");
@@ -45,8 +47,6 @@ if($_POST){
                 //checks if given password is in table
                 if (password_verify($pass, $row[$pass_index])) {
 
-                    
-
                     //1 if the user has admin rights, 0 if not
                     $_SESSION['admin'] = $row[$admin_index];
 
@@ -57,33 +57,15 @@ if($_POST){
 
                     $error .= "row: $row[$admin_index]<br>Session: ".$_SESSION['admin']."<br>";
 
+                    header('Location: http://' .  $_SERVER['HTTP_HOST'] . '/blog');
 
-                    ?>
-
-                    <script type="text/javascript">
-                        window.location = "http://basbaer.com/food";
-                    </script>
-
-                    <?php 
-                    
-                    exit();
+                    exit;
 
                 }else{
 
                     $error.= "password does not match<br>";
                 }
             }
-
-            // no matching password
-            ?>
-
-            <script type="text/javascript">
-                        window.location = "http://basbaer.com/";
-
-                        
-            </script>
-
-            <?php
             
         }
 
@@ -96,9 +78,21 @@ if($_POST){
     $error .= "No POST variable<br>";
 }
 
+// no matching password
+// check if user is already logged in
+if (isset($_SESSION["password"])){
+    header('Location: http://' .  $_SERVER['HTTP_HOST'] . '/blog');
+}else{
+    header('Location: http://' .  $_SERVER['HTTP_HOST']);
+}
+
+exit;
+
 if (isset($error)){
     //echo $error;
 }
+
+
 
 
 ?>

@@ -2,10 +2,11 @@
 
 
 include "Crypto.php";
-include "ConnectDB.php";
+include "../util/ConnectDB.php";
+require_once "../config.php";
 
 ###################### ADD INFORMATION HERE ###############################################
-$isLocalhost = false;
+$isLocalhost = ISONAPACHE;
 $password = "";
 ##########################################################################################
 if(!$_SESSION) {
@@ -100,7 +101,7 @@ function add_Meal()
 
             $error .= "Meal added succesful<br>";
 
-            header("Location: index.html");
+            header("Location: index.php");
             
             exit;
         }

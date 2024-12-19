@@ -1,12 +1,13 @@
 <?php
 
 include "Crypto.php";
-include "ConnectDB.php";
+include "../util/ConnectDB.php";
+require_once "../config.php";
 
 
 
 ###################### ADD INFORMATION HERE ###############################################
-$isLocalhost = false;
+$isLocalhost = ISONAPACHE;
 $password = "";
 ##########################################################################################
 if(!$_SESSION) {
