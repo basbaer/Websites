@@ -12,7 +12,7 @@ $col_admin = "admin";
 
 //get the server and the db name (db name and username are the same) from the stack cp control panel > MySQL Databases
 //Note: the password does not contain special characters
-$link = ConnectDB::connect(ISONAPACHE, "logInDb-3138340968", "ud0uz58bam", "58438");
+$link = ConnectDB::connect(ISONAPACHE, "logInDb-3138340968", "ud0uz58bam", "58438", "sdb-f.hosting.stackcp.net");
 
 //this line is needed to display special characters properly
 $link->query("SET NAMES 'utf8'");

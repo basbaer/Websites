@@ -13,109 +13,22 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
  
 
-
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-
-            font-family: 'M PLUS 1 Code', sans-serif;
-            background-image: url("pictures/jungle_1.jpg");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            /* overflow-x: hidden; /* no scrolling is possible 
-            overflow-y: hidden;*/
-            
-        }
-
-        main {
-            width: 100vw;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-
-        h1 {
-            font-size: 7vmin; /* font size relative to the viewport */
-            
-        }
-
-        h2 {
-            font-size: 6vmin; /* font size relative to the viewport */
-            
-        }
-
-        pre {
-            white-space: pre-wrap;
-            word-wrap: break-word;
-            overflow-x: hidden;
-        }
-
-
-        .post_container {
-            width: 90%;
-            margin-left: auto;
-            margin-right: auto;
-            border-radius: 5px; 
-            
-        }
-
-        .center_text{
-            text-align: center;
-            color: white;
-        }
-
-        .dateText{
-            color: #aaaaaa;
-            font-size: 3.5vmin;
-        }
-
-        .hidden_at_start{
-            visibility: hidden;
-        }
-
-        #blogTitleContainer {
-            max-width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        #blogTitle {
-            display: inline-block;
-            color: #ffffff;
-            padding: 10px 20px; /* Add some padding around the text */
-            border-radius: 5px; /* Optional: rounded corners */
-            
-        }
-
-        #wrap{
-            margin-top: 20vh;
-            text-align: center;
-        }
-
-        #pw_incorrect{
-            color: white;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 
 
 </head>
 
 <body>
-    <div class="container-fluid d-flex justify-content-end bg-dark bg-opacity-75">
-        <div class="row">
-            <form class="d-inline-flex py-2 mb-0" action="util/sendPassword.php" method="post" id="form_password">
-                    <input class="form-control me-2" type="password" placeholder="Password" aria-label="Password" id="passwordLogIn" name="password">
-                    <button class="btn btn-outline-success text-nowrap" type="submit">Log In</button>
-                </form>
-            </div>
-    </div>
+    <div class="background"></div>
+    <div class="content p-0 m-0">
+        <div class="container-fluid d-flex justify-content-end">
+            <div class="row">
+                <form class="d-inline-flex py-2 mb-0" action="util/sendPassword.php" method="post" id="form_password">
+                        <input class="form-control me-2" type="password" placeholder="Password" aria-label="Password" id="passwordLogIn" name="password">
+                        <button class="btn btn-outline-success text-nowrap" type="submit">Log In</button>
+                    </form>
+                </div>
+        </div>
 
 
     <div id="blogTitleContainer" class="d-flex justify-content-center my-3">
@@ -180,6 +93,7 @@
     ?>
 
 
+</div>
 
 
 

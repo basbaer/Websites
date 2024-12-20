@@ -2,7 +2,7 @@
 
 class ConnectDB {
 
-    public static function connect($isLocalhost, $databaseName, $databasePassword, $port=NULL){
+    public static function connect($isLocalhost, $databaseName, $databasePassword, $port=NULL, $onlineServer="shareddb-s.hosting.stackcp.net"){
         /**
          * connects to databases on stackcp
          * 
@@ -15,11 +15,12 @@ class ConnectDB {
         //Note: the password does not contain special characters
         if($isLocalhost){
             if($port != NULL){
-                $link = mysqli_connect("mysql.gb.stackcp.com", $databaseName, $databasePassword, $databaseName, $port);
+                $offlineServer = "mysql.gb.stackcp.com";
+                $link = mysqli_connect($offlineServer, $databaseName, $databasePassword, $databaseName, $port);
             }
             
         }else{
-            $link = mysqli_connect("shareddb-s.hosting.stackcp.net", $databaseName, $databasePassword, $databaseName);
+            $link = mysqli_connect($onlineServer, $databaseName, $databasePassword, $databaseName);
         }
                 // this will echo nothing if there is no error
         if (mysqli_connect_error()){
