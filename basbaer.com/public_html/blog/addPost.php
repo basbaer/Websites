@@ -14,6 +14,7 @@ $col_postId = BLOGPOST_ID;
 $col_date = BLOG_DATE;
 $col_title = BLOG_TITLE;
 $col_text = BLOG_TEXT;
+$col_link = BLOG_LINK;
 
 $number_of_cols = BLOG_NUM_COLS;
 
@@ -43,7 +44,7 @@ if(array_key_exists('admin', $_SESSION)){
 
 function add_Post()
 {
-    global $link_ownStuff, $table_name, $col_postId, $col_date, $col_title, $col_text;
+    global $link_ownStuff, $table_name, $col_postId, $col_date, $col_title, $col_text, $col_link;
 
     $error = "";
 
@@ -59,11 +60,17 @@ function add_Post()
     $title_val = $_POST['title'];
     $text_val = $_POST['text'];
 
+    if (empty($_POST['link'])){
+        $link_val = NULL;
+    }else{
+        $link_val = $_POST['link'];
+    }
+
     //input query (if no amount is submitted, it will be NULL)
-    $sql = "INSERT INTO $table_name ($col_postId, $col_date, $col_title, $col_text) VALUES (NULL, ?, ?, ?)";
+    $sql = "INSERT INTO $table_name ($col_postId, $col_date, $col_title, $col_text, $col_link) VALUES (NULL, ?, ?, ?, ?)";
     
     $stmt = $link_ownStuff->prepare($sql);
-    $stmt->bind_param("sss", $date_val, $title_val, $text_val);
+    $stmt->bind_param("ssss", $date_val, $title_val, $text_val, $link_val);
     $stmt->execute();
 
 

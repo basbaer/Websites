@@ -20,7 +20,7 @@
 
 <body>
     <div class="background"></div>
-    <div class="content p-0 m-0">
+    
         <div class="container-fluid d-flex justify-content-end">
             <div class="row">
                 <form class="d-inline-flex py-2 mb-0" action="util/sendPassword.php" method="post" id="form_password">
@@ -75,27 +75,37 @@
             //reformat date
             $date = DateTime::createFromFormat('Y-m-d', $date);
             $date = $date->format('d.m.Y');
+
             $title = prepare_string($row[2]);
 
             $text = $row[3];
             $text = prepare_string($row[3]);
 
-            $blogPost = '
+            //check if there is a link
+            $link = htmlspecialchars($row[4]);
+
+            if(empty($link)){
+                $blogPost = '
                 <div class="post_container container-fluid bg-dark bg-opacity-75 border border-white mb-3">
                     <h2 class="text-light mb-0">'. $title . '</h2>
                     <p class="dateText mt-0"> - ' . $date . '</p>
                     <pre class="text-light">'. $text . '</pre>
                 </div>
             ';
+            }else{
+                $blogPost = '
+                <div class="post_container container-fluid bg-dark bg-opacity-75 border border-white mb-3">
+                    <h2 class="text-light mb-0">'. $title . '</h2>
+                    <p class="dateText mt-0"> - ' . $date . '</p>
+                    <pre class="text-light">'. $text . '</pre>
+                    <p><a href="' . $link . '" target="_blank" rel="noopener noreferrer">Link zu Google Photos</a></p>
+                </div>
+            ';
+            }
 
             echo $blogPost;
         }
     ?>
-
-
-</div>
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 

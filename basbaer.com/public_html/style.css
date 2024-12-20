@@ -56,7 +56,7 @@ pre {
 }
 
 .content {
-    position: absolute;
+    position: relative;
     z-index: 1; /* Make sure content is above the background */
 }
 

@@ -8,4 +8,5 @@ const BLOGPOST_ID = "id";
 const BLOG_DATE = "date";
 const BLOG_TITLE = "title";
 const BLOG_TEXT = "text";
-const BLOG_NUM_COLS = 4;
+const BLOG_LINK = "link";
+const BLOG_NUM_COLS = 5;

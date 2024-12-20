@@ -91,6 +91,10 @@ if (!$_SESSION['password']){
                     <label for="text" class="form-label text-light mt-1">Text</label>
                     <textarea id="text" type="text" class="form-control me-auto" rows="20" name="text"></textarea>
                 </div>
+                <div class="mb-3">
+                    <label for="link" class="form-label text-light mt-1">Link to Google Photos</label>
+                    <input id="link" type="text" class="form-control me-auto" name="link">
+                </div>
                 <button id="publishButton" type="submit" name="action" value="addPost" class="btn btn-success">Publish</button>
             </div>
         </form>
